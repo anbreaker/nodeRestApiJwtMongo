@@ -1,7 +1,12 @@
+'use strict';
 import express from 'express';
 import morgan from 'morgan';
-import path from 'path';
 import pkg from '../package.json';
+
+// To use more secure environment variables
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 // Import Routes
 import productsRoutes from './routes/products.routes';
@@ -14,6 +19,9 @@ app.set('pkg', pkg);
 
 // Middleware
 app.use(morgan('dev'));
+
+// Config Express Data
+app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {

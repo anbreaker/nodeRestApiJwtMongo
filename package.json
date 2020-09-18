@@ -4,9 +4,9 @@
   "description": "Simple Rest API with JsonWebToken",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
+    "dev": "NODE_ENV=development nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir build",
-    "start": "node build/index.js"
+    "start": "NODE_ENV=production node build/index.js"
   },
   "repository": {
     "type": "git",

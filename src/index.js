@@ -1,11 +1,8 @@
 'use strict';
-// To use more secure environment variables
-// if (process.env.NODE_ENV !== 'production') {
-//   require('dotenv').config();
-// }
-require('dotenv').config();
 
+// Initializations
 import app from './app';
+import './database';
 
 // Start the server
 const server = app.listen(app.get('port'), () => {
