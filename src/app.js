@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Import Routes
 import productsRoutes from './routes/products.routes';
+import authRoutes from './routes/auth.routes';
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/products', productsRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/auth', authRoutes);
 
 export default app;

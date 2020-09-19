@@ -2,7 +2,7 @@
 
 // Initializations
 import app from './app';
-import './database';
+import './mongooseDatabase';
 
 // Start the server
 const server = app.listen(app.get('port'), () => {
