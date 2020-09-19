@@ -10,6 +10,7 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useCreateIndex: true,
   })
   .then((db) => console.log('DB is conneted an create on', db.connection.host))
   .catch((error) => console.error(error));

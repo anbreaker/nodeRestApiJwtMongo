@@ -1,14 +1,19 @@
 'use strict';
 import User from '../models/User';
+import jwt from 'jsonwebtoken';
 
 export const signUp = async (req, res) => {
   const {username, email, password, roles} = req.body;
 
-  new User({
+  const newUser = new User({
     username,
     email,
-    password,
+    password: await User.encryptPassword(password),
   });
+
+  const savedUser = await newUser.save();
+
+  //1.14
 
   res.json('signUp');
 };
