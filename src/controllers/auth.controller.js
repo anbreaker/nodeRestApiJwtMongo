@@ -31,12 +31,19 @@ export const signUp = async (req, res) => {
   res.status(200).json({token});
 };
 
-//1.29
-
 export const signIn = async (req, res) => {
-  const userFound = await User.findOne({email: req.body.email});
+  const userFound = await User.findOne({email: req.body.email}).populate('roles');
 
   if (!userFound) return res.status(400).json({message: 'User not Found'});
-  console.log(userFound);
+
+  const matchPassword = await User.comparePassword(req.body.password, userFound.password);
+
+  if (!matchPassword)
+    return res.status(401).json({token: null, message: 'Invalid Password'});
+
+  const token = jwt.sign({id: userFound._id}, config.SECRET, {
+    expiresIn: 3600,
+  });
+
   res.json({token});
 };

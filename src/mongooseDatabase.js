@@ -16,7 +16,7 @@ mongoose
   .catch((error) => console.error(error));
 
 mongoose.connection.on('open', () => {
-  console.log('Conectado a MongoDB en', mongoose.connection.name);
+  console.log('Connected to MongoDB on', mongoose.connection.name);
 });
 
 mongoose.connection.on('error', (err) => {

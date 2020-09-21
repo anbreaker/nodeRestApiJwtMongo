@@ -4,9 +4,10 @@ import {Router} from 'express';
 const router = Router();
 
 import * as productsCtrl from '../controllers/products.controller';
+import {verifyToken} from '../middlewares/authJwt';
 
 // Routes
-router.post('/', productsCtrl.createProduct);
+router.post('/', verifyToken, productsCtrl.createProduct);
 
 router.get('/', productsCtrl.getProducts);
 
