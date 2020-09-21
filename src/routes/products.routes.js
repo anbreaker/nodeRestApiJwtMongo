@@ -13,8 +13,8 @@ router.get('/', productsCtrl.getProducts);
 
 router.get('/:productId', productsCtrl.getProductsById);
 
-router.put('/:productId', productsCtrl.updateProductById);
+router.put('/:productId', verifyToken, productsCtrl.updateProductById);
 
-router.delete('/:productId', productsCtrl.deleteProductsById);
+router.delete('/:productId', verifyToken, productsCtrl.deleteProductsById);
 
 export default router;
