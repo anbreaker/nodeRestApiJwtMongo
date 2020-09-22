@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 // Import Routes
 import productsRoutes from './routes/products.routes';
 import authRoutes from './routes/auth.routes';
+import usersRoutes from './routes/user.routes';
 
 const app = express();
 createRoles();
@@ -39,5 +40,6 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api/products', productsRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);
 
 export default app;
